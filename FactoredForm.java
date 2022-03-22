@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class FactoredForm extends Quadratic {
     
     int numOfFactors;
@@ -72,20 +74,46 @@ public class FactoredForm extends Quadratic {
         return countMatches(equation);
     }
 
-    // public ArrayList<Double> getSAndT() {
+    public ArrayList<Integer> getSAndT() {
+        ArrayList<Integer> sAndT = new ArrayList<Integer>();
+        sAndT.add(sVal);
+        sAndT.add(tVal);
+        return sAndT;
+    }
+
+    public String convertToStandardForm() {
+        String standardFormOfEquation = Integer.toString(getAVal()) + "x^2 ";
+        int calculatedBVal = getAVal() * (-tVal + -sVal);
+        int calculatedCVal = getAVal() * -sVal * -tVal;
         
-    // }
+        standardFormOfEquation += (calculatedBVal >= 0) ? "+ " : "- ";
+        standardFormOfEquation += Math.abs(calculatedBVal) + "x ";
 
-    // public String convertToStandardForm() {
-    //     String standardFormOfEquation = Integer.toString(getAVal());
-    //     // int calculatedBVal = getAVal() *  
+        standardFormOfEquation += (calculatedCVal >= 0) ? "+ " : "- ";
+        standardFormOfEquation += Math.abs(calculatedCVal);
+        return standardFormOfEquation;
+    }
 
-    //     // multiplying by 10 until there are no more decimal points remaining
-    //     // this is because of a requirement to standard form being that 
-    //     // decimals are not permitted
-    // }
+    public ArrayList<Double> calculateVertexCoordinates() {
+        ArrayList<Double> vertexCoords = new ArrayList<Double>();
+        double xOfV = (double)(sVal + tVal)/2;
+        vertexCoords.add(xOfV);
+        vertexCoords.add(getAVal() * (xOfV - sVal) * (xOfV - tVal));
+        return vertexCoords;
+    }
 
-    // public String convertToVertexForm() {
+    public String convertToVertexForm() {
+        String vertexFormOfEquation = Integer.toString(getAVal()) + "(x ";
+        Double xOfV = calculateVertexCoordinates().get(0);
+        Double yOfV = calculateVertexCoordinates().get(1);
 
-    // }
+        // it's (x - h) therefore I need to flip the sign by evaluating if it's 
+        // below 0 rather than greater/equal to 0
+        vertexFormOfEquation += (xOfV < 0) ? "+ " : "- ";
+        vertexFormOfEquation += Math.abs(xOfV) + ")^2 ";
+
+        vertexFormOfEquation += (yOfV >= 0) ? "+ " : "- ";
+        vertexFormOfEquation += Math.abs(yOfV);
+        return vertexFormOfEquation;
+    }
 }

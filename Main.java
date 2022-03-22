@@ -4,7 +4,7 @@ class Main {
   public static void main(String[] args) {
     
 	
-	Quadratic myParabola = new Quadratic("-3x^2 - 5x - 7");
+	Quadratic myParabola = new Quadratic("-3x^2 - 5x + 7");
 
 	// testing various methods of this standard form equation (my base form 
 	// for this superclass)
@@ -51,17 +51,23 @@ class Main {
 				FactoredForm factory = new FactoredForm(factoredFormInput);
 
 				System.out.println("number of factors: " + factory.getNumOfFactors());
-				// System.out.println(
-				// 		"standard form conversion of this parabola's equation: " + factory.convertToStandardForm());
-				//System.out.println(
-						//"vertex form conversion of this parabola's equation: " + factory.convertToVertexForm());
-
-
-
+				System.out.println(
+						"standard form conversion of this parabola's equation: " + factory.convertToStandardForm());
+				System.out.println(
+						"vertex form conversion of this parabola's equation: " + factory.convertToVertexForm());
 				break;
-			// case 3:
-			// 	VertexForm vertexy = new VertexForm(equationInput);
-			// 	break;
+			case 3:
+				System.out.print("Enter the equation in the format a(x - h)^2 + k: ");
+				sc.nextLine();
+				String vertexFormInput = sc.nextLine();
+				VertexForm vertexy = new VertexForm(vertexFormInput);
+				System.out.println(vertexy.stateShifts());
+				System.out.println(
+						"standard form conversion of this parabola's equation: " + vertexy.convertToStandardForm());
+				System.out.println(
+						"factored form conversion of this parabola's equation: " + vertexy.convertToFactoredForm());
+				
+				break;
 		}
 	}
 	sc.close();

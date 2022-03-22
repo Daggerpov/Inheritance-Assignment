@@ -24,6 +24,7 @@ public class Quadratic {
 		
 		// going through the equation until the first x, which
 		// will be to the power of 2 and everything before it will be the 
+		// a value, and this will work for all forms of parabolic equations
 		for (int i = 0; i <= equation.indexOf( 'x' ); i++){
 			char currentChar = equation.charAt(i);
 			boolean flag = Character.isDigit(currentChar);
