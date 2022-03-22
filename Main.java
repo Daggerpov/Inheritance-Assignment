@@ -8,9 +8,9 @@ class Main {
 
 	// testing various methods of this standard form equation (my base form 
 	// for this superclass)
-	System.out.println(myParabola.calculateRandomXValues(5));
-	System.out.println(myParabola.calculateRandomYValue(2));
-	System.out.println(myParabola.calculateFactors());
+	System.out.println("x values at y = 5:" + myParabola.calculateRandomXValues(5));
+	System.out.printf("y value at x = 2: %d\n", myParabola.calculateRandomYValue(2));
+	System.out.println("factors: " + myParabola.calculateFactors());
 	
 		
 
@@ -27,27 +27,37 @@ class Main {
 			break;
 		}
 
-		
-
 		switch(form){
 			case 1:
 				System.out.println("Enter the equation in the format ax^2 + bx + c:");
+				sc.nextLine();
 				String standardFormInput = sc.nextLine();
-				System.out.println(standardFormInput);
+
 				StandardForm standardy = new StandardForm(standardFormInput);
+
 				// testing the remaining standard form methods
-				System.out.println(standardy.calculateXOfVertex());
-				System.out.println(standardy.calculateYOfVertex());
-				System.out.println(standardy.calculateVertexCoordinates());
-				System.out.println(standardy.calculateYIntercept());
-
-				System.out.println(standardy.convertToFactoredForm());
-
+				System.out.println("x of vertex: " + standardy.calculateXOfVertex());
+				System.out.println("y of vertex: " + standardy.calculateYOfVertex());
+				System.out.println("vertex coordinates: " + standardy.calculateVertexCoordinates());
+				System.out.println("y-intercept: " + standardy.calculateYIntercept());
+				System.out.println("factored form conversion of this parabola's equation: " + standardy.convertToFactoredForm());
+				System.out.println(
+						"vertex form conversion of this parabola's equation: " + standardy.convertToVertexForm());
 				break;
 			case 2:
 				System.out.print("Enter the equation in the format a(x - s)(x - t): ");
-				String factoredFormInput = sc.next();
+				sc.nextLine();
+				String factoredFormInput = sc.nextLine();
 				FactoredForm factory = new FactoredForm(factoredFormInput);
+
+				System.out.println("number of factors: " + factory.getNumOfFactors());
+				// System.out.println(
+				// 		"standard form conversion of this parabola's equation: " + factory.convertToStandardForm());
+				//System.out.println(
+						//"vertex form conversion of this parabola's equation: " + factory.convertToVertexForm());
+
+
+
 				break;
 			// case 3:
 			// 	VertexForm vertexy = new VertexForm(equationInput);
