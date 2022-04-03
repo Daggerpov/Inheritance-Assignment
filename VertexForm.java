@@ -16,6 +16,8 @@ public class VertexForm extends Quadratic {
     private void extractVals() {
         String[] partsOfEquation = equation.split(" ");
 
+        // same method as what's done in FactoredForm.java
+
         int endIndexOfS = partsOfEquation[2].indexOf(")");
 
         if (endIndexOfS != -1) {
@@ -50,6 +52,7 @@ public class VertexForm extends Quadratic {
     public String convertToStandardForm() {
         String standardFormOfEquation = Integer.toString(getAVal()) + "x^2 ";
         
+        // simplified mathematical calcluations for B and C vals
         int calculatedBVal = getAVal() * -hVal * 2;
         
         int calculatedCVal = (int)(getAVal() * (Math.pow(-hVal, 2)) + kVal);
@@ -63,6 +66,7 @@ public class VertexForm extends Quadratic {
     }
 
     public ArrayList<Double> calculateFactors() {
+        // moving over to left side, dividing by the a value, then square rooting to find x
         Double leftSide = -(double)kVal;
         leftSide /= getAVal();
         System.out.println(leftSide);
@@ -75,6 +79,8 @@ public class VertexForm extends Quadratic {
             factors.add(null);
             return factors;
         }
+
+        // taking positive/negative versions of the square root result
         double positiveFactor = Math.sqrt(leftSide);
         double negativeFactor = -(Math.sqrt(leftSide));
 
@@ -118,22 +124,17 @@ public class VertexForm extends Quadratic {
 			
 			if (sVal.isNaN() == false){
 				factoredFormOfEquation += "(x ";
-				if (sVal >= 0){
-					factoredFormOfEquation += "- ";
-				} else {
-					factoredFormOfEquation += "+ ";
-				}
+				
+				factoredFormOfEquation += sVal >= 0 ? "- ": "+ ";
+				
 				factoredFormOfEquation += Double.toString(Math.abs(sVal)) + ")";
 			}
 
 			if (tVal.isNaN() == false){
 				factoredFormOfEquation += "(x ";
-				if (tVal >= 0) {
-					factoredFormOfEquation += "- ";
-				} else {
-					factoredFormOfEquation += "+ ";
-				}
-
+				
+                factoredFormOfEquation += tVal >= 0 ? "- " : "+ ";
+				
 				factoredFormOfEquation += Double.toString(Math.abs(tVal)) + ")";
 			}
         }

@@ -52,8 +52,9 @@ public class StandardForm extends Quadratic {
 	public String convertToVertexForm() {
 		ArrayList<Double> vertexCoords = calculateVertexCoordinates();
 
-		String vertexFormOfEquation = Integer.toString(getAVal());
-		vertexFormOfEquation += "(x ";
+		String vertexFormOfEquation = Integer.toString(getAVal()) + "(x ";
+
+		// putting in the string of the sign, then simply inserting the absolute value like earlier
 		if (vertexCoords.get(0) >= 0) {
 			vertexFormOfEquation += "- ";
 		} else {

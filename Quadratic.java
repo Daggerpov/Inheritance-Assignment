@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.lang.Math;
 
 public class Quadratic {
-
 	int aVal;
 	int bVal;
 	int cVal;
@@ -27,6 +26,8 @@ public class Quadratic {
 		// a value, and this will work for all forms of parabolic equations
 		for (int i = 0; i <= equation.indexOf( 'x' ); i++){
 			char currentChar = equation.charAt(i);
+			
+			// setting a flag to go up if the character value is a digit to be part of the aVal digits
 			boolean flag = Character.isDigit(currentChar);
 			
 			if (flag){
